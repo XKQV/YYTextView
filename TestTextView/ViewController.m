@@ -11,26 +11,35 @@
 
 @interface ViewController ()
 @property (nonatomic, strong) YYLabel *label;
+@property (nonatomic, strong) NSString *placeholderString;
+@property (nonatomic, strong) NSMutableAttributedString *text;
 @end
 
 @implementation ViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+- (void)viewDidLoad {
+    [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSMutableAttributedString *text = [NSMutableAttributedString new];
+    self.text = [NSMutableAttributedString new];
     UIFont *font = [UIFont systemFontOfSize:16];
     
-    [text appendAttributedString:[self phone]];
-    [text appendAttributedString:[self image]];
-    [text appendAttributedString:[self url]];
-    [text appendAttributedString:[[NSAttributedString alloc] initWithString:[self placeholderString] attributes:nil]];
-    [text appendAttributedString:[self showLessString]];
+    //    [text appendAttributedString:[self phone]];
+    [self.text appendAttributedString:[self image]];
+    //    [text appendAttributedString:[self url]];
+    self.placeholderString = @"Phone number is: 18525555555 UILabel and UITextView API compatible. url is: www.baidu.com High performance asynchronous text layout and rendering. Extended CoreText attributes with more text effects. Text attachments with UIImage, UIView and CALayer";
+    [self detectThePlaceHolderString:self.placeholderString withHandler:^(NSAttributedString *sortedString) {
+        [self.text appendAttributedString:sortedString];
+    }];
     
-    text.yy_font= font ;
-    text.yy_lineSpacing = 10;
-    self.label.attributedText = text;
+    [self.text appendAttributedString:[self showLessString]];
+    
+    self.text.yy_font= font ;
+    self.text.yy_lineSpacing = 10;
+    self.label.attributedText = self.text;
+    self.label.textTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+        NSLog(@"Whole textview is tapped");
+    };
+    
     // 添加全文
     [self addSeeMoreButton];
 }
@@ -50,21 +59,67 @@
 }
 
 
-- (NSString *)placeholderString {
-    return @"UILabel and UITextView API compatible. High performance asynchronous text layout and rendering. Extended CoreText attributes with more text effects. Text attachments with UIImage, UIView and CALayer";
+- (void)detectThePlaceHolderString:(NSString *)string withHandler:(void(^)(NSAttributedString *))handler{
+    
+    __weak typeof(self) weakSelf = self;
+    [self detectKeyValueWithRawString:string andNSTextCheckingType:NSTextCheckingTypePhoneNumber handler:^(NSString *phone) {
+        if (handler) {
+            handler([weakSelf highlighWithPhone:phone].copy);
+        }
+    }];
+    //    [self detectKeyValueWithRawString:string andNSTextCheckingType:NSTextCheckingTypeLink handler:^(NSString *link) {
+    //        [weakSelf :phone];
+    //    }];
+    
 }
 
-- (NSAttributedString *)phone {
-    NSString *phone = @"18525555555";
-    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"Phone number is: 18525555555 "];
-    [text yy_setColor:[UIColor greenColor] range:[text.string rangeOfString:phone]];
+- (void)detectKeyValueWithRawString:(NSString *)string andNSTextCheckingType:(NSTextCheckingType)type handler:(void(^)(NSString *))handler {
+    NSError *error = nil;
+    NSDataDetector *dataDetector = [NSDataDetector dataDetectorWithTypes:type
+                                                                   error:&error];
+    
+    NSArray *stringsToTest = @[
+                               string
+                               ];
+    
+    for (NSString *string in stringsToTest)
+    {
+        [dataDetector enumerateMatchesInString:string
+                                       options:0
+                                         range:NSMakeRange(0, string.length)
+                                    usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop)
+         {
+             NSString *numberWithExtra = result.phoneNumber;
+             NSCharacterSet *toRemove = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+             NSString *trimmed = [[numberWithExtra componentsSeparatedByCharactersInSet:toRemove] componentsJoinedByString:@""];
+             if(trimmed && trimmed.length)
+             {
+                 if (handler) {
+                     handler(trimmed);
+                 }
+             }
+             else
+             {
+                 NSLog(@"No phone number");
+                 if (handler) {
+                     handler(@"");
+                 }
+             }
+         }];
+    }
+    
+}
+
+- (NSMutableAttributedString *)highlighWithPhone:(NSString *)phone {
+    NSMutableAttributedString *temString = [[NSMutableAttributedString alloc] initWithString:self.placeholderString attributes:nil];
+    [temString yy_setColor:[UIColor greenColor] range:[temString.string rangeOfString:phone]];
     YYTextHighlight *highlight = [YYTextHighlight new];
     [highlight setColor:[UIColor colorWithRed:0 green:1 blue:0 alpha:0.5]];
     highlight.tapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
         NSLog(@"phone tapped");
     };
-    [text yy_setTextHighlight:highlight range:[text.string rangeOfString:phone]];
-    return text;
+    [temString yy_setTextHighlight:highlight range:[temString.string rangeOfString:phone]];
+    return temString;
 }
 
 - (NSAttributedString *)url {
@@ -82,9 +137,9 @@
 
 - (NSAttributedString *)image {
     NSMutableAttributedString *attachment = nil;
-    UIImage *image = [self imageWithImageSimple:[UIImage imageNamed:@"photo"] scaledToSize:CGSizeMake(20, 20)];
+    UIImage *image = [self imageWithImageSample:[UIImage imageNamed:@"photo"] scaledToSize:CGSizeMake(20, 20)];
     
-    attachment = [NSMutableAttributedString yy_attachmentStringWithContent:image contentMode:UIViewContentModeCenter attachmentSize:image.size alignToFont:[UIFont systemFontOfSize:1] alignment:YYTextVerticalAlignmentBottom];
+    attachment = [NSMutableAttributedString yy_attachmentStringWithContent:image contentMode:UIViewContentModeCenter attachmentSize:image.size alignToFont:[UIFont systemFontOfSize:16] alignment:YYTextVerticalAlignmentCenter];
     return attachment;
 }
 
@@ -131,7 +186,7 @@
     return text;
 }
 
-- ( UIImage *)imageWithImageSimple:( UIImage *)image scaledToSize:( CGSize )newSize {
+- ( UIImage *)imageWithImageSample:( UIImage *)image scaledToSize:( CGSize )newSize {
     // Create a graphics image context
     UIGraphicsBeginImageContext (newSize);
     
