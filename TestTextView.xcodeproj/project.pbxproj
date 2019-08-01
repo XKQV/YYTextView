@@ -3,12 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0AD633F4A224A69B2924185F /* Pods_TestTextViewUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1843651DF3E98F0ACEAA5071 /* Pods_TestTextViewUITests.framework */; };
 		2855B071199F0CE6E1C77469 /* Pods_TestTextViewTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F892C50C39D614249463B2EE /* Pods_TestTextViewTests.framework */; };
+		8279937E22F0A28100A96DB7 /* CustomisedScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8279937D22F0A28100A96DB7 /* CustomisedScrollViewController.m */; };
+		8279938422F1D86D00A96DB7 /* UILabel+ReadWriteFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8279938322F1D86D00A96DB7 /* UILabel+ReadWriteFrame.m */; };
+		8279938722F1D8CD00A96DB7 /* YYLabel+ReadWriteFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8279938622F1D8CD00A96DB7 /* YYLabel+ReadWriteFrame.m */; };
 		829F0FFC22ED563400597E68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 829F0FFB22ED563400597E68 /* AppDelegate.m */; };
 		829F0FFF22ED563400597E68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829F0FFE22ED563400597E68 /* ViewController.m */; };
 		829F100222ED563400597E68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 829F100022ED563400597E68 /* Main.storyboard */; };
@@ -17,6 +20,8 @@
 		829F100A22ED563600597E68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 829F100922ED563600597E68 /* main.m */; };
 		829F101422ED563700597E68 /* TestTextViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 829F101322ED563700597E68 /* TestTextViewTests.m */; };
 		829F101F22ED563700597E68 /* TestTextViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 829F101E22ED563700597E68 /* TestTextViewUITests.m */; };
+		82C12C3E22F34E14008E9BB2 /* Father.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C12C3D22F34E14008E9BB2 /* Father.m */; };
+		82C12C4122F34F85008E9BB2 /* Son.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C12C4022F34F85008E9BB2 /* Son.m */; };
 		84715EC2E3C8A09D564B032F /* Pods_TestTextView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 074F6B1CF58E025661F8F4D5 /* Pods_TestTextView.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +48,12 @@
 		44E62E2E48A8E6253B942D29 /* Pods-TestTextView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTextView.debug.xcconfig"; path = "Target Support Files/Pods-TestTextView/Pods-TestTextView.debug.xcconfig"; sourceTree = "<group>"; };
 		67F37840C7B84957DB8BC07F /* Pods-TestTextViewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTextViewTests.debug.xcconfig"; path = "Target Support Files/Pods-TestTextViewTests/Pods-TestTextViewTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7B740C86AC13BD550EF12CB4 /* Pods-TestTextView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTextView.release.xcconfig"; path = "Target Support Files/Pods-TestTextView/Pods-TestTextView.release.xcconfig"; sourceTree = "<group>"; };
+		8279937C22F0A28100A96DB7 /* CustomisedScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomisedScrollViewController.h; sourceTree = "<group>"; };
+		8279937D22F0A28100A96DB7 /* CustomisedScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomisedScrollViewController.m; sourceTree = "<group>"; };
+		8279938222F1D86D00A96DB7 /* UILabel+ReadWriteFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+ReadWriteFrame.h"; sourceTree = "<group>"; };
+		8279938322F1D86D00A96DB7 /* UILabel+ReadWriteFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ReadWriteFrame.m"; sourceTree = "<group>"; };
+		8279938522F1D8CD00A96DB7 /* YYLabel+ReadWriteFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YYLabel+ReadWriteFrame.h"; sourceTree = "<group>"; };
+		8279938622F1D8CD00A96DB7 /* YYLabel+ReadWriteFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "YYLabel+ReadWriteFrame.m"; sourceTree = "<group>"; };
 		829F0FF722ED563400597E68 /* TestTextView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTextView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		829F0FFA22ED563400597E68 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		829F0FFB22ED563400597E68 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -59,6 +70,10 @@
 		829F101A22ED563700597E68 /* TestTextViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestTextViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		829F101E22ED563700597E68 /* TestTextViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTextViewUITests.m; sourceTree = "<group>"; };
 		829F102022ED563700597E68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82C12C3C22F34E14008E9BB2 /* Father.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Father.h; sourceTree = "<group>"; };
+		82C12C3D22F34E14008E9BB2 /* Father.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Father.m; sourceTree = "<group>"; };
+		82C12C3F22F34F85008E9BB2 /* Son.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Son.h; sourceTree = "<group>"; };
+		82C12C4022F34F85008E9BB2 /* Son.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Son.m; sourceTree = "<group>"; };
 		9FB717E4093270203B6FBA36 /* Pods-TestTextViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTextViewTests.release.xcconfig"; path = "Target Support Files/Pods-TestTextViewTests/Pods-TestTextViewTests.release.xcconfig"; sourceTree = "<group>"; };
 		C4602EF1ECFB204A16C7CF04 /* Pods-TestTextViewUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTextViewUITests.release.xcconfig"; path = "Target Support Files/Pods-TestTextViewUITests/Pods-TestTextViewUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F892C50C39D614249463B2EE /* Pods_TestTextViewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestTextViewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +121,7 @@
 		829F0FEE22ED563400597E68 = {
 			isa = PBXGroup;
 			children = (
+				82C12C3B22F34D9B008E9BB2 /* Inheritance */,
 				829F0FF922ED563400597E68 /* TestTextView */,
 				829F101222ED563700597E68 /* TestTextViewTests */,
 				829F101D22ED563700597E68 /* TestTextViewUITests */,
@@ -132,11 +148,17 @@
 				829F0FFB22ED563400597E68 /* AppDelegate.m */,
 				829F0FFD22ED563400597E68 /* ViewController.h */,
 				829F0FFE22ED563400597E68 /* ViewController.m */,
+				8279937C22F0A28100A96DB7 /* CustomisedScrollViewController.h */,
+				8279937D22F0A28100A96DB7 /* CustomisedScrollViewController.m */,
 				829F100022ED563400597E68 /* Main.storyboard */,
 				829F100322ED563600597E68 /* Assets.xcassets */,
 				829F100522ED563600597E68 /* LaunchScreen.storyboard */,
 				829F100822ED563600597E68 /* Info.plist */,
 				829F100922ED563600597E68 /* main.m */,
+				8279938222F1D86D00A96DB7 /* UILabel+ReadWriteFrame.h */,
+				8279938322F1D86D00A96DB7 /* UILabel+ReadWriteFrame.m */,
+				8279938522F1D8CD00A96DB7 /* YYLabel+ReadWriteFrame.h */,
+				8279938622F1D8CD00A96DB7 /* YYLabel+ReadWriteFrame.m */,
 			);
 			path = TestTextView;
 			sourceTree = "<group>";
@@ -159,6 +181,17 @@
 			path = TestTextViewUITests;
 			sourceTree = "<group>";
 		};
+		82C12C3B22F34D9B008E9BB2 /* Inheritance */ = {
+			isa = PBXGroup;
+			children = (
+				82C12C3C22F34E14008E9BB2 /* Father.h */,
+				82C12C3D22F34E14008E9BB2 /* Father.m */,
+				82C12C3F22F34F85008E9BB2 /* Son.h */,
+				82C12C4022F34F85008E9BB2 /* Son.m */,
+			);
+			path = Inheritance;
+			sourceTree = "<group>";
+		};
 		D229B32895D1BBBB0FB3C40E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,7 +202,6 @@
 				F93CD8C2715EEBD15509452F /* Pods-TestTextViewUITests.debug.xcconfig */,
 				C4602EF1ECFB204A16C7CF04 /* Pods-TestTextViewUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -393,9 +425,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82C12C4122F34F85008E9BB2 /* Son.m in Sources */,
+				8279938722F1D8CD00A96DB7 /* YYLabel+ReadWriteFrame.m in Sources */,
+				8279938422F1D86D00A96DB7 /* UILabel+ReadWriteFrame.m in Sources */,
 				829F0FFF22ED563400597E68 /* ViewController.m in Sources */,
 				829F100A22ED563600597E68 /* main.m in Sources */,
+				8279937E22F0A28100A96DB7 /* CustomisedScrollViewController.m in Sources */,
 				829F0FFC22ED563400597E68 /* AppDelegate.m in Sources */,
+				82C12C3E22F34E14008E9BB2 /* Father.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +605,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TestTextView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -585,6 +623,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TestTextView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -7,6 +7,7 @@ target 'TestTextView' do
 
   # Pods for TestTextView
 pod 'YYText'
+pod 'Masonry'
   target 'TestTextViewTests' do
     inherit! :search_paths
     # Pods for testing

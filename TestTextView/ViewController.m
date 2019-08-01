@@ -8,6 +8,9 @@
 
 #import "ViewController.h"
 #import <YYText/YYText.h>
+#import "YYLabel+ReadWriteFrame.h"
+#import "Masonry.h"
+#import "Son.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) YYLabel *label;
@@ -20,6 +23,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    Father *father = [Father new];
+    
+    Son *son = [Son new];
+    
     self.text = [NSMutableAttributedString new];
     UIFont *font = [UIFont systemFontOfSize:16];
     
@@ -30,11 +38,15 @@
     [self detectThePlaceHolderString:self.placeholderString withHandler:^(NSAttributedString *sortedString) {
         [self.text appendAttributedString:sortedString];
     }];
-    
     [self.text appendAttributedString:[self showLessString]];
     
     self.text.yy_font= font ;
     self.text.yy_lineSpacing = 10;
+//    [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.left.equalTo(@50);
+//        make.width.equalTo(@200);
+//        make.height.greaterThanOrEqualTo(@100);
+//    }];
     self.label.attributedText = self.text;
     self.label.textTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
         NSLog(@"Whole textview is tapped");
@@ -46,11 +58,10 @@
 
 - (YYLabel *)label {
     if (!_label) {
-        _label= [YYLabel new];
+        _label= [[YYLabel alloc] initWithFrame:CGRectMake(50, 100, 200, 120)];
         _label.userInteractionEnabled = YES;
         _label.numberOfLines = 0;
         _label.textVerticalAlignment = YYTextVerticalAlignmentTop;
-        _label.frame = CGRectMake(40,60, self.view.frame.size.width-80,120);
         [self.view addSubview:_label];
         _label.layer.borderWidth = 0.5;
         _label.layer.borderColor = [UIColor colorWithRed:0.000 green:0.463 blue:1.000 alpha:1.000].CGColor;
@@ -153,7 +164,17 @@
     [highlight setColor:[UIColor colorWithRed:0 green:0 blue:1.000 alpha:0.5]];
     highlight.tapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
         YYLabel *label = weakSelf.label;
-        [label sizeToFit];
+        label.numberOfLines = 0;
+//        [label sizeToFit];
+//
+        //计算文本尺寸
+        YYTextLayout *layout = [YYTextLayout layoutWithContainerSize:CGSizeMake(200, CGFLOAT_MAX) text:self.text];
+        self.label.textLayout = layout;
+        CGFloat introHeight = layout.textBoundingSize.height;
+//        [label setHight:introHeight];
+        CGRect frame = label.frame;
+        frame.size.height = introHeight;
+        label.frame = frame;
     };
     [text yy_setColor:[UIColor colorWithRed:0.000 green:0 blue:1.000 alpha:1.000] range:[text.string rangeOfString:more]];
     [text yy_setTextHighlight:highlight range:[text.string rangeOfString:more]];
@@ -175,9 +196,8 @@
     [hi setColor:[UIColor colorWithRed:0 green:0 blue:1.000 alpha:0.5]];
     hi.tapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
         YYLabel *label = weakSelf.label;
-        CGRect frame = label.frame;
-        frame.size.height = 120;
-        label.frame = frame;
+        label.numberOfLines = 4;
+//        [label setHight:120];
     };
     
     [text yy_setColor:[UIColor colorWithRed:0.000 green:0 blue:1.000 alpha:1.000] range:[text.string rangeOfString:showLess]];

@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-TestTextView/Pods-TestTextView-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework
 ${BUILT_PRODUCTS_DIR}/YYText/YYText.framework
